@@ -5,3 +5,8 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+developer = Developer.create(name: 'Yaz Seyid')
+client     = Client.create(name: 'Nury Aman')
+
+developer.projects.create(client: client)
