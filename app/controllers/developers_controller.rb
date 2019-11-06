@@ -7,6 +7,7 @@ class DevelopersController < ApplicationController
 
     def new
         @dev = Developer.new
+        @dev.projects.build
     end
 
     def edit
@@ -15,8 +16,14 @@ class DevelopersController < ApplicationController
 
     def create
         @dev = Developer.new(dev_params)
-        @dev.save
-        redirect_to @dev
+        # @dev.save
+        # redirect_to @dev
+        if @dev.save
+            redirect_to @dev
+        else
+            @errors = @dev.errors.full_messages
+            redirect_to 'new'
+        end
     end
 
     def show
@@ -40,6 +47,6 @@ class DevelopersController < ApplicationController
     end
 
     def dev_params
-        params.require(:developer).permit(:name, :email, :password, :phone_number, :address)
+        params.require(:developer).permit(:name, :email, :password, :phone_number, :address, projects_attributes:[:name, :description, :completed])
     end
 end

@@ -1,14 +1,14 @@
 
 <h1>Developers</h1>
 
+<% if @dev.errors.any? %>
+    <% @dev.errors.full_messages.each do |e| %>
+    <p> <%= e %> </p>
+    <% end %>
+<% end %>
 
 <ul>
     <% @devs.each do |d| %>
         <li><%= link_to d.name, @dev %></li>
-    <% end %>
-</ul>
-<ul>
-    <% @projects.each do |project| %>
-    <li> <%= project.name %> </li>
     <% end %>
 </ul>
