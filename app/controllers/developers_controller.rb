@@ -1,5 +1,5 @@
 class DevelopersController < ApplicationController
-    # before_action :set_developer, only: [:show, :edit, :update, :destroy]
+    before_action :set_developer, only: [:show, :edit, :update, :destroy]
 
     def index
         @devs = Developer.all
@@ -10,7 +10,6 @@ class DevelopersController < ApplicationController
     end
 
     def edit
-
     end
 
 
@@ -21,16 +20,17 @@ class DevelopersController < ApplicationController
     end
 
     def show
-        @dev = Developer.find_by(params[:id])
     end
 
-   
-    def update
 
+    def update
+        @dev.update(dev_params)
+        redirect_to @dev
     end
 
     def destroy
-
+        @dev.destroy
+        redirect_to @devs
     end
 
     private
