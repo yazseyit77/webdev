@@ -7,6 +7,10 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 developer = Developer.create(name: 'Yaz Seyid')
+developer = Developer.create(name: 'Bill Gates')
+developer = Developer.create(name: 'Steve Jobs')
 client     = Client.create(name: 'Nury Aman')
+client     = Client.create(name: 'Lara James')
+client     = Client.create(name: 'Ashley Bryan')
 
 developer.projects.create(client: client)
