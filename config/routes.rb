@@ -7,9 +7,12 @@ Rails.application.routes.draw do
     devise_scope :user do
       get 'signup', to: 'devise/registrations#new'
     end
+    devise_scope :user do
+      get '/users/sign_out', to: 'devise/sessions#destroy'
+    end
     
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
-  root to: 'application#home'
+  root to: 'developers#index'
   resources :developers
   resources :clients, only: [:index] 
   resources :projects

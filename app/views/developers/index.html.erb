@@ -1,6 +1,10 @@
 
 <h1>Developers</h1>
 
+<%= link_to 'Sign out', destroy_user_session_path %>
+<%= link_to 'Sign up', signup_path %>
+<%= link_to 'Login', new_user_session_path %>
+
 <ul>
     <% @devs.each do |d| %>
         <li><%= link_to d.name, @dev %></li>

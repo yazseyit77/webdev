@@ -16,8 +16,6 @@ class DevelopersController < ApplicationController
 
     def create
         @dev = Developer.new(dev_params)
-        # @dev.save
-        # redirect_to @dev
         if @dev.save
             redirect_to @dev
         else
