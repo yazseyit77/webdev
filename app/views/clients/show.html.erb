@@ -1,11 +1,15 @@
 
+<h5>Name: <%= @client.name %></h5>
+<h5>Address: <%= @client.address %></h5>
+<h5>Phone number: <%= @client.phone_number %></h5>
+<h5>Accepted: <%= @client.created_at.strftime('%m/%d/%Y') %></h5>
 
-
-<h5><%= @client.name %></h5>
-<h5><%= @client.address %></h5>
-<h5><%= @client.phone_number %></h5>
 
     <% @client.projects.each do |p| %>
         <p><%= p.name %></p>
         <% end %>
 
+
+<%= link_to 'Back', clients_path %><br/>
+<%= link_to 'Edit Client', edit_client_path %><br/>
+<%= link_to 'Delete Client', { action: :destroy, id: @client.id }, method: :delete %>

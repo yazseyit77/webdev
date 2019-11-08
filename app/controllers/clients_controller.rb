@@ -7,6 +7,7 @@ class ClientsController < ApplicationController
 
     def new
         @client = Client.new
+        byebug
         @client.projects.build
     end
 
@@ -16,11 +17,13 @@ class ClientsController < ApplicationController
 
     def create
         @client = Client.new(client_params)
-        if @client.save
-            redirect_to @client
-        else
-            @errors = @client.errors.full_messages
-            redirect_to 'new'
+        respond_to do |format|
+            if @client.save
+                format.html { redirect_to @client, notice: 'Client was successfully created!' }
+            else
+                # @errors = @client.errors.full_messages
+                format.html { redirect_to 'new'}
+            end
         end
     end
 
@@ -29,13 +32,20 @@ class ClientsController < ApplicationController
 
 
     def update
-        @client.update(client_params)
-        redirect_to @client
+        respond_to do |format|
+            if @client.update(client_params)
+                format.html {redirect_to @client, notice: 'Client was successfully updated.' }
+            else
+                format.hmtl { render :edit }
+            end
+        end
     end
 
     def destroy
         @client.destroy
-        redirect_to @clients
+        respond_to do |format|
+            format.html { redirect_to clients_path, notice: 'Client was successfully deleted.' }
+        end
     end
 
     private
