@@ -1,12 +1,13 @@
 
 <h5>Name: <%= @client.name %></h5>
 <h5>Address: <%= @client.address %></h5>
-<h5>Phone number: <%= @client.phone_number %></h5>
+<h5>Phone #: <%= @client.phone_number %></h5>
+<h5>Email: <%= @client.email %></h5>
 <h5>Accepted: <%= @client.created_at.strftime('%m/%d/%Y') %></h5>
 
 
-    <% @client.projects.each do |p| %>
-        <p><%= p.name %></p>
+    <% @client.projects.each do |project| %>
+        <p><%= link_to project.name, project %></p>
         <% end %>
 
 

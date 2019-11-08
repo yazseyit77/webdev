@@ -1,16 +1,26 @@
 class ProjectsController < ApplicationController
     before_action :set_project, only: [:show, :edit, :update, :destroy]
-    # before_action :authenticate_project!, except: [:index, :show]
+    before_action :authenticate_user!, except: [:index, :show]
 
     def index
-        @projects = Project.all
+        if params[:id]
+            @client = Client.find(params[:id])
+            @projects = @client.projects
+        else
+            @projects = Project.all
+        end
     end
     
-        def show
-        end
+    def show
+    end
 
     def new
-        @project = Project.new
+        if params[:id]
+            @client = Client.find(params[:id])
+            @project = @client.projects.build
+        else
+            @project = Project.new
+        end
     end
 
     def edit
@@ -18,8 +28,10 @@ class ProjectsController < ApplicationController
 
 
     def create
-        @project = Project.new(project_params)
-        @project.save!
+        self.create(project_params)
+        # # @project.user_id = current_user.id
+        # # @project.client_id = 2
+        # @project.save!
     end
 
 

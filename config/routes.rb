@@ -15,7 +15,19 @@ Rails.application.routes.draw do
   root to: 'users#index'
   
   resources :users
-  resources :developers
-  resources :clients
+
+  resources :clients do
+
+    resources :projects
+  end
+  
   resources :projects
+  # get 'projects', to: 'projects#index', as: 'projects'
+
+
+
+
+
+
+
 end

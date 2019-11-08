@@ -7,7 +7,6 @@ class ClientsController < ApplicationController
 
     def new
         @client = Client.new
-        byebug
         @client.projects.build
     end
 
