@@ -18,3 +18,6 @@ developer.projects.create(client: client)
 
 project = Project.create(name: "AirBnb", description: "An app used for finding a place to stay")
 project = Project.create(name: "Netflix", description: "An app used for watching movies and TV-series")
+
+user = User.create(name: 'Yaz')
+user = User.create(name: 'Amanda')

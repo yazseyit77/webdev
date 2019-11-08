@@ -1,0 +1,8 @@
+
+<h1>Developers</h1>
+
+<ul>
+    <% @users.each do |d| %>
+        <li><%= link_to d.name, @user %></li>
+    <% end %>
+</ul>

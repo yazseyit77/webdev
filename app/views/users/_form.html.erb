@@ -1,0 +1,17 @@
+
+<h1>Developer</h1>
+<%= form_for @user do |f| %>
+    <p><%= f.label :name %></p>
+    <p><%= f.text_field :name %></p>
+    <h2>Projects</h2>
+    
+        <%= f.fields_for :projects do |p| %>
+            <p><%= p.label :name %></p>
+            <p><%= p.text_field :name %></p>
+            <p><%= p.label :description %></p>
+            <p><%= p.text_field :description %></p>
+        <% end %>
+
+
+    <p><%= f.submit %></p>
+<% end %>
