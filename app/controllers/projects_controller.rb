@@ -1,11 +1,14 @@
 class ProjectsController < ApplicationController
     before_action :set_project, only: [:show, :edit, :update, :destroy]
     before_action :authenticate_user!, except: [:index, :show]
+    helper_method :params
 
     def index
-        if params[:id]
-            @client = Client.find(params[:id])
-            @projects = @client.projects
+        @clients = Client.all
+        if !params[:client].blank?
+            @projects = Project.by_client(params[:client])
+            # @client = Client.find(params[:id])
+            # @projects = @client.projects
         else
             @projects = Project.all
         end

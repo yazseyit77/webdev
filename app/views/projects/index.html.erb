@@ -1,5 +1,22 @@
-
-<% @projects.each do |project| %>
-    <h4><%= link_to project.name, project %></h4>
+<% if !params[:client].blank? %>
+  <% @projects = Project.where(client: params[:client]) %>
 <% end %>
 
+
+
+<div>
+  <h3>Filter Projects:</h3>
+  <%= form_tag("/projects", method: "get") do %>
+    <%= select_tag "Client", options_from_collection_for_select(Client.all, "id", "name"), include_blank: true %>
+    <%= submit_tag "Filter" %>
+  <% end %>
+</div>
+
+
+<% @projects.each do |project| %>
+<div>
+    <h3><%= link_to project.name, project %></h3>
+    <h5>by: <%= link_to project.client.name, client_path(project.client) %></h5>
+    <h3><%= project.description %></h3>
+<div>
+<% end %>
