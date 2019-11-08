@@ -1,0 +1,8 @@
+
+<h3>Project name: <%= @project.name %><br/></h3>
+<h3>Completed: <%= @project.completed %><br/></h3>
+<br/>
+<br/>
+<%= link_to 'Back', client_path %><br/>
+<%= link_to 'Edit Project', edit_project_path %><br/>
+<%= link_to 'Delete Project', { action: :destroy, id: @project.id }, method: :delete %>

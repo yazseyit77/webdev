@@ -1,0 +1,13 @@
+
+<h3>Edit Project</h3>
+<%= form_for @project do |f| %>
+    <%= f.hidden_field :client_id, value:@project.client_id %>
+    <p><%= f.label :name %></p>
+    <p><%= f.text_field :name %></p>
+    <p><%= f.label :description %></p>
+    <p><%= f.text_field :description %></p>
+    <p><%= f.label :completed %></p>
+    <p><%= f.check_box :completed %></p>
+   
+    <p><%= f.submit %></p>
+<% end %>

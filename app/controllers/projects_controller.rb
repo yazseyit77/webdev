@@ -15,8 +15,8 @@ class ProjectsController < ApplicationController
     end
 
     def new
-        if params[:id]
-            @client = Client.find(params[:id])
+        if params[:client_id]
+            @client = Client.find(params[:client_id])
             @project = @client.projects.build
         else
             @project = Project.new
@@ -28,10 +28,15 @@ class ProjectsController < ApplicationController
 
 
     def create
-        self.create(project_params)
-        # # @project.user_id = current_user.id
-        # # @project.client_id = 2
-        # @project.save!
+        # byebug
+        @project = current_user.projects.build(project_params)
+        respond_to do |format|
+        if @project.save
+            format.html { redirect_to projects_path, notice: 'Projects was successfully created!' }
+        else
+            format.html { redirect_to 'new'}
+        end
+    end
     end
 
 
@@ -42,16 +47,17 @@ class ProjectsController < ApplicationController
 
     def destroy
         @project.destroy
-        redirect_to @projects
+        redirect_to projects_path
     end
 
     private
 
     def set_project
-        @project = Project.find[params[:id]]
+        # byebug
+        @project = Project.find(params[:id])
     end
 
     def project_params
-        params.require(:project).permit(:name, :description, :completed)
+        params.require(:project).permit(:name, :description, :completed, :client_id)
     end
 end

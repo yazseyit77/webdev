@@ -22,12 +22,10 @@ Rails.application.routes.draw do
   end
   
   resources :projects
-  # get 'projects', to: 'projects#index', as: 'projects'
+  resources :clients
 
-
-
-
-
+  get 'client/:id/projects', to: 'projects#index', as: 'this_client_projects'
+  
 
 
 end

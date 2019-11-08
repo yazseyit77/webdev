@@ -15,6 +15,7 @@ class ClientsController < ApplicationController
 
 
     def create
+
         @client = Client.new(client_params)
         respond_to do |format|
             if @client.save
