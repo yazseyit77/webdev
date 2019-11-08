@@ -16,6 +16,6 @@ Rails.application.routes.draw do
   
   resources :users
   resources :developers
-  resources :clients, only: [:index] 
+  resources :clients
   resources :projects
 end

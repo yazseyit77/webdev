@@ -1,7 +1,7 @@
 <nav>
     <ul>
         <li> <%= link_to 'Home', root_path %> </li>
-        <% if user_signed_in? %>
+        <% if !user_signed_in? %>
             <li><%= link_to 'Sign Up', signup_path %></li>
             <li><%= link_to 'Login', new_user_session_path %></li>
             <li><%= link_to 'Login with Github', user_github_omniauth_authorize_path %></li>

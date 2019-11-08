@@ -16,7 +16,7 @@ class ProjectsController < ApplicationController
 
     def create
         @project = Project.new(project_params)
-        @project.save
+        @project.save!
     end
 
     def show

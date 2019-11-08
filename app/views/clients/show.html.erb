@@ -1,0 +1,11 @@
+
+
+
+<h5><%= @client.name %></h5>
+<h5><%= @client.address %></h5>
+<h5><%= @client.phone_number %></h5>
+
+    <% @client.projects.each do |p| %>
+        <p><%= p.name %></p>
+        <% end %>
+
