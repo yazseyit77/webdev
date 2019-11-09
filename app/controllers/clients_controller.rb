@@ -3,7 +3,7 @@ class ClientsController < ApplicationController
 
     def index
         @user = current_user
-        @clients = @user.clients.all.sort_by{|w| w.name }
+        @clients = @user.clients.all.sort_by{|w| w.name }.uniq
     end
 
     def new

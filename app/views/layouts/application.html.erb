@@ -12,7 +12,9 @@
   <body>
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
-    <h4><em>Logged in as:<%= current_user.name if current_user %></em></h4>
+    <% if user_signed_in? %>
+      <h4><em>Logged in as:<%= current_user.name if current_user %></em></h4>
+    <% end %>
     <%= render 'layouts/nav' %>
 
     <%= yield %>

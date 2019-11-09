@@ -20,7 +20,7 @@ class ProjectsController < ApplicationController
 
     def new
         if params[:client_id]
-            @client = Client.find_or_create(params[:client_id])
+            @client = Client.find_or_create_by(params[:client_id])
             @project = @client.projects.build
         else
             @project = Project.new
