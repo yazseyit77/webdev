@@ -3,12 +3,12 @@ class ClientsController < ApplicationController
 
     def index
         @user = current_user
-        @clients = @user.clients.all if @user
+        @clients = @user.clients.all.sort_by{|w| w.name }
     end
 
     def new
         if current_user
-            @client = Client.new
+            @client = current_user.clients.new
             @client.projects.build
         else
             redirect_to login_path
@@ -20,12 +20,12 @@ class ClientsController < ApplicationController
 
 
     def create
-        @client = Client.new(client_params)
+        @client = current_user.clients.new(client_params)
         respond_to do |format|
             if @client.save
                 format.html { redirect_to @client, notice: 'Client was successfully created!' }
             else
-                format.html { redirect_to 'new'}
+                format.html { redirect_to 'new', notice: 'Client was not created!' }
             end
         end
     end

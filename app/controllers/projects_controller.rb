@@ -20,7 +20,7 @@ class ProjectsController < ApplicationController
 
     def new
         if params[:client_id]
-            @client = Client.find(params[:client_id])
+            @client = Client.find_or_create(params[:client_id])
             @project = @client.projects.build
         else
             @project = Project.new
@@ -32,7 +32,6 @@ class ProjectsController < ApplicationController
 
 
     def create
-        # byebug
         @project = current_user.projects.build(project_params)
         respond_to do |format|
         if @project.save
@@ -57,7 +56,6 @@ class ProjectsController < ApplicationController
     private
 
     def set_project
-        # byebug
         @project = Project.find(params[:id])
     end
 

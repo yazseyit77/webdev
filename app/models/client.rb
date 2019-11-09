@@ -3,4 +3,5 @@ class Client < ApplicationRecord
     has_many :users, through: :projects
 
     accepts_nested_attributes_for :projects, reject_if: proc {|attributes| attributes['name'].blank? || attributes['description'].blank?}
+
 end

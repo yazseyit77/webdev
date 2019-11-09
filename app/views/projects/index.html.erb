@@ -7,7 +7,7 @@
 <div>
   <h3>Filter Projects:</h3>
   <%= form_tag("/projects", method: "get") do %>
-    <%= select_tag "Client", options_from_collection_for_select(Client.all, "id", "name"), include_blank: true %>
+    <%= select_tag "Client", options_from_collection_for_select(@clients, "id", "name"), include_blank: true %>
     <%= submit_tag "Filter" %>
   <% end %>
 </div>

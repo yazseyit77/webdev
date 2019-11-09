@@ -5,10 +5,12 @@
 <h5>Email: <%= @client.email %></h5>
 <h5>Accepted: <%= @client.created_at.strftime('%m/%d/%Y') %></h5>
 
-
-    <% @client.projects.each do |project| %>
-        <p><%= link_to project.name, project %></p>
-        <% end %>
+<h2>Projects:</h2>
+<% @client.projects.each do |project| %>
+    <p>Name: <br/><%= link_to project.name, project %></p>
+    <p>Description: <br/><%= project.description %></p>
+    <p>Completed: <%= project.completed %></p>
+<% end %>
 
 
 <%= link_to 'Create Project For this Client', new_client_project_path(@client) %><br/>
