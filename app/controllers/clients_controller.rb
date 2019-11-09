@@ -2,16 +2,17 @@ class ClientsController < ApplicationController
     before_action :set_client, only: [:show, :edit, :update, :destroy]
 
     def index
-        # if current_user
-        #     current_user.clients
-        # else
-            @clients = Client.all
-        # end
+        @user = current_user
+        @clients = @user.clients.all if @user
     end
 
     def new
-        @client = Client.new
-        @client.projects.build
+        if current_user
+            @client = Client.new
+            @client.projects.build
+        else
+            redirect_to login_path
+        end
     end
 
     def edit
@@ -19,13 +20,11 @@ class ClientsController < ApplicationController
 
 
     def create
-
         @client = Client.new(client_params)
         respond_to do |format|
             if @client.save
                 format.html { redirect_to @client, notice: 'Client was successfully created!' }
             else
-                # @errors = @client.errors.full_messages
                 format.html { redirect_to 'new'}
             end
         end

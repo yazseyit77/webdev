@@ -1,44 +1,46 @@
 class UsersController < ApplicationController
-    before_action :set_user, only: [:show, :edit, :update, :destroy]
+    before_action :set_user, only: [:show]
     before_action :authenticate_user!, except: [:index, :show]
 
     def index
         @users = User.all
     end
 
-    def new
-        @user = User.new
-        @user.projects.build
-    end
-
-    def edit
-    end
-
-
-    def create
-        @user = User.new(user_params)
-        if @user.save
-            redirect_to @user
-        else
-            @errors = @user.errors.full_messages
-            redirect_to 'new'
-        end
-    end
-
     def show
         @user = User.find(params[:id])
     end
 
+    # def new
+    #     @user = User.new
+    #     @user.projects.build
+    # end
 
-    def update
-        @user.update(user_params)
-        redirect_to @user
-    end
+    # def edit
+    # end
 
-    def destroy
-        @user.destroy
-        redirect_to @users
-    end
+
+    # def create
+    #     @user = User.new(user_params)
+    #     if @user.save
+    #         redirect_to @user
+    #     else
+    #         @errors = @user.errors.full_messages
+    #         redirect_to 'new'
+    #     end
+    # end
+
+ 
+
+
+    # def update
+    #     @user.update(user_params)
+    #     redirect_to @user
+    # end
+
+    # def destroy
+    #     @user.destroy
+    #     redirect_to @users
+    # end
 
     private
 

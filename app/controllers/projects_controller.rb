@@ -4,13 +4,14 @@ class ProjectsController < ApplicationController
     helper_method :params
 
     def index
+        @user = current_user
         @clients = Client.all
         if !params[:client].blank?
             @projects = Project.by_client(params[:client])
             # @client = Client.find(params[:id])
             # @projects = @client.projects
         else
-            @projects = Project.all
+            @projects = @user.projects.all
         end
     end
     

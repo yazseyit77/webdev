@@ -1,2 +1,10 @@
 
 <h1>Welcome To Home Page!</h1>
+
+<% @users.each do |user| %>
+    <fieldset>
+    <legend>User Info</legend>
+        <p><%= user.name %></p>
+        <p><%= user.email %></p>
+    </fieldset>
+<% end %>
