@@ -25,6 +25,10 @@ gem 'devise', '~> 4.7', '>= 4.7.1'
 gem 'omniauth-github'
 gem 'omniauth-google-oauth2'
 
+# Use SCSS for stylesheets
+
+gem 'bootstrap-sass', '~> 3.1.1'
+
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 

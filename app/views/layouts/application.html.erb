@@ -6,17 +6,18 @@
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
-    <% if user_signed_in? %>
-      <h4><em>Logged in as:<%= current_user.name if current_user %></em></h4>
-    <% end %>
     <%= render 'layouts/nav' %>
 
+    <div class="container-fluid">
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
+  
     <%= yield %>
+    </div>
   </body>
 </html>
