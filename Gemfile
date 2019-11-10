@@ -27,7 +27,7 @@ gem 'omniauth-google-oauth2'
 
 # Use SCSS for stylesheets
 
-gem 'bootstrap-sass', '~> 3.1.1'
+gem 'bootstrap-sass', '~> 3.4.1'
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
