@@ -10,14 +10,14 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
+  <body class="jumbotron" style="background-color:transparent !important;">
     <%= render 'layouts/nav' %>
 
-    <div class="container-fluid">
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
-  
-    <%= yield %>
+    <div class="field container-fluid ">
+      <p class="notice"><%= notice %></p>
+      <p class="alert"><%= alert %></p>
+    
+      <%= yield %>
     </div>
   </body>
 </html>
