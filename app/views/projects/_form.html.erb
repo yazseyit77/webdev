@@ -1,26 +1,8 @@
 
-<form>
-    <div class="form-row">
-        <div class="col-5">
-            <%= form_for @project do |f| %>
-                <%= f.hidden_field :client_id, value:@project.client_id %>
-                <%= f.text_field :name, class: 'form-control', placeholder: "Name" %><br/>
-                <%= f.text_field :description, class: 'form-control', placeholder: "Description" %><br/>
-                
-                <div class="form-group row">
-                    <div class="col-sm-2">Checkbox</div>
-                        <div class="col-sm-8">
-                            <div class="form-check">
-                                <%= f.check_box :completed, class: "form-check-input" %>
-                            </div>
-                        </div>
-                </div>
-                <%= f.submit :class => "btn-primary" %><br/>
-            <% end %>
-        </div>
-        <div class="col">
-        </div>
-        <div class="col">
-        </div>
-    </div>
-</form>
+<%= form_for @project do |f| %>
+    <%= f.hidden_field :client_id, value:@project.client_id %>
+    <%= f.text_field :name, class: 'form-control', placeholder: "Name"  %><br />
+    <%= f.text_field :description, class: 'form-control', placeholder: "Description"  %><br />
+    <%= f.check_box :completed %><br /><br />
+    <%= f.submit class: 'btn-primary' %>
+<% end %>

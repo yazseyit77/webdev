@@ -1,17 +1,9 @@
-<form>
-    <div class="form-row">
-        <div class="col-5">
-            <%= form_for @client do |f| %>
-                <p><%= f.text_field :name, class: 'form-control', placeholder: "Name" %></p>
-                <p><%= f.email_field :email, class: 'form-control', placeholder: "Email" %></p>
-                <p><%= f.number_field :phone_number, class: 'form-control', placeholder: "Phone Number" %></p>
-                <p><%= f.text_field :address, class: 'form-control', placeholder: "Address"%></p>
-                <p><%= f.submit :class => "btn-primary" %></p>
-            <% end %>
-        </div>
-        <div class="col">
-        </div>
-        <div class="col">
-        </div>
-    </div>
-</form>
+
+
+<%= form_for @client do |f| %>
+    <%= f.text_field :name, class: 'form-control', placeholder: "Name"  %><br />
+    <%= f.email_field :email, class: 'form-control', placeholder: "Email"  %><br />
+    <%= f.number_field :phone_number, class: 'form-control', placeholder: "Phone Number"  %><br />
+    <%= f.text_field :address, class: 'form-control', placeholder: "Address"  %><br />
+    <%= f.submit class: 'btn-primary' %>
+<% end %>
