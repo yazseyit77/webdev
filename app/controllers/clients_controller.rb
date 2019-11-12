@@ -2,8 +2,9 @@ class ClientsController < ApplicationController
     before_action :set_client, only: [:show, :edit, :update, :destroy]
 
     def index
+        # byebug
         @user = current_user
-        @clients = @user.clients.all.sort_by{|w| w.name }.uniq
+        @clients = @user.clients.sort_by{|w| w.name }.uniq
     end
 
     def new
@@ -20,6 +21,7 @@ class ClientsController < ApplicationController
 
 
     def create
+        # byebug
         @client = current_user.clients.new(client_params)
         respond_to do |format|
             if @client.save
