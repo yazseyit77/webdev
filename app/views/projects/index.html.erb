@@ -3,10 +3,10 @@
 <% end %>
 
 
-<% @projects.each do |project| %>
+<% @projects.each.with_index(1) do |project, index| %>
 <div>
-    <h3><%= link_to project.name, project %></h3>
+    <h3><%= index %>. <%= link_to project.name, project %></h3> 
     <h5>by: <%= link_to project.client.name, client_path(project.client) %></h5>
-    <h3><%= project.description %></h3>
+    <h3><%= project.description %></h3><br />
 <div>
 <% end %>

@@ -1,15 +1,15 @@
-
+<h2>Client:</h2>
 <h5>Name: <%= @client.name %></h5>
 <h5>Address: <%= @client.address %></h5>
 <h5>Phone #: <%= @client.phone_number %></h5>
 <h5>Email: <%= @client.email %></h5>
-<h5>Accepted: <%= @client.created_at.strftime('%m/%d/%Y') %></h5>
+<h5>Accepted: <%= @client.created_at.strftime('%m/%d/%Y') %></h5><br />
 
 <h2>Projects:</h2>
-<% @client.projects.each do |project| %>
-    <p>Project name: <%= link_to project.name, project %></p>
+<% @client.projects.each.with_index(1) do |project, index| %>
+    <p>Project <%= index %> name: <%= link_to project.name, project %></p>
     <p>Description: <%= project.description %></p>
-    <p>Completed: <%= project.completed ? "Yes" : "No" %></p>
+    <p>Completed: <%= project.completed ? "Yes" : "No" %></p><br />
 <% end %>
 
 

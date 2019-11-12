@@ -8,8 +8,6 @@ class ProjectsController < ApplicationController
         @clients = Client.all
         if !params[:client].blank?
             @projects = Project.by_client(params[:client])
-            # @client = Client.find(params[:id])
-            # @projects = @client.projects
         else
             @projects = @user.projects.all
         end
