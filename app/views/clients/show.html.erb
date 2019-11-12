@@ -14,6 +14,7 @@
 
 
 <%= link_to 'Create Project For this Client', new_client_project_path(@client) %><br/>
+
 <%= link_to 'Back', clients_path %><br/>
 <%= link_to 'Edit Client', edit_client_path %><br/>
 <%= link_to 'Delete Client', { action: :destroy, id: @client.id }, method: :delete %>

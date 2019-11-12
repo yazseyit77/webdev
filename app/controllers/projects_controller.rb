@@ -17,7 +17,6 @@ class ProjectsController < ApplicationController
     end
 
     def new
-        # byebug
         if params[:client_id]
             @client = Client.find_or_create_by(id: params[:client_id])
             @project = @client.projects.build
@@ -31,11 +30,10 @@ class ProjectsController < ApplicationController
 
 
     def create
-        # byebug
         @project = current_user.projects.build(project_params)
         respond_to do |format|
         if @project.save
-            format.html { redirect_to projects_path, notice: 'Projects was successfully created!' }
+            format.html { redirect_to client_path(@project.client.id), notice: 'Projects was successfully created!' }
         else
             format.html { redirect_to 'new'}
         end
@@ -50,7 +48,7 @@ class ProjectsController < ApplicationController
 
     def destroy
         @project.destroy
-        redirect_to projects_path
+        redirect_to client_path(@project.client.id)
     end
 
     private
