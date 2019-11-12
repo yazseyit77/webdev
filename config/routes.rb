@@ -24,8 +24,6 @@ Rails.application.routes.draw do
   resources :projects
   resources :clients
 
-  # get 'client/:id/projects', to: 'projects#index', as: 'this_client_projects'
-  
 
 
-end
+end #the whole Rails.application.routes.draw do
