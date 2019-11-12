@@ -1,10 +1,11 @@
+<%= link_to 'Create Client', new_client_path %>
+<br />
+<br />
+<br />
+
 
 <% if current_user %>
-    <% @clients.each do |client| %>
-        <h4><%= link_to client.name, client %></h4>
+    <% @clients.each.with_index(1) do |client, index| %>
+        <h4><%= index %>. <%= link_to client.name, client %></h4>
     <% end %>
 <% end %>
-
-
-
-<%= link_to 'Create Client', new_client_path %>

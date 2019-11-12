@@ -7,9 +7,9 @@
 
 <h2>Projects:</h2>
 <% @client.projects.each do |project| %>
-    <p>Name: <br/><%= link_to project.name, project %></p>
-    <p>Description: <br/><%= project.description %></p>
-    <p>Completed: <%= project.completed %></p>
+    <p>Project name: <%= link_to project.name, project %></p>
+    <p>Description: <%= project.description %></p>
+    <p>Completed: <%= project.completed ? "Yes" : "No" %></p>
 <% end %>
 
 
