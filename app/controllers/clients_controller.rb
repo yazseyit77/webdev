@@ -39,7 +39,7 @@ class ClientsController < ApplicationController
             if @client.update(client_params)
                 format.html {redirect_to @client, notice: 'Client was successfully updated.' }
             else
-                format.hmtl { render :edit }
+                format.hmtl { render :edit, notice: 'Client was not updated!' }
             end
         end
     end
