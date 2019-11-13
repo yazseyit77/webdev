@@ -3,6 +3,7 @@
     <%= f.hidden_field :client_id, value:@project.client_id %>
     <%= f.text_field :name, class: 'form-control', placeholder: "Name"  %><br />
     <%= f.text_field :description, class: 'form-control', placeholder: "Description"  %><br />
+    <%= f.label :completed %>
     <%= f.check_box :completed %><br /><br />
     <%= f.submit class: 'btn-primary' %>
 <% end %>
