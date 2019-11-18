@@ -21,13 +21,12 @@ class ClientsController < ApplicationController
 
     def create
         @client = current_user.clients.new(client_params)
-        respond_to do |format|
             if @client.save
-                format.html { redirect_to @client, notice: 'Client was successfully created!' }
+                redirect_to @client, notice: 'Client was successfully created!'
             else
-                format.html { redirect_to 'new', notice: 'Client was not created!' }
+                flash.now[:errors] = @client.errors.full_messages
+                render 'new'
             end
-        end
     end
 
     def show
@@ -35,12 +34,12 @@ class ClientsController < ApplicationController
 
 
     def update
-        respond_to do |format|
-            if @client.update(client_params)
-                format.html {redirect_to @client, notice: 'Client was successfully updated.' }
-            else
-                format.hmtl { render :edit, notice: 'Client was not updated!' }
-            end
+        if current_user && @client.users.include?(current_user) 
+            @client.update(client_params)
+            redirect_to @client, notice: 'Client was successfully updated.'
+        else
+            flash.now[:notice] = 'Client was not updated!'
+            render :edit
         end
     end
 
