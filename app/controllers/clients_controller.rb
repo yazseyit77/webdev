@@ -1,9 +1,11 @@
 class ClientsController < ApplicationController
     before_action :set_client, only: [:show, :edit, :update, :destroy]
+    before_action :authenticate_user!, except: [:index, :show]
 
     def index
         @user = current_user
-        @clients = @user.clients.sort_by{|w| w.created_at  }.uniq
+        # @clients = @user.clients.sort_by{|w| w.created_at  }.uniq
+        @clients = @user.listed
     end
 
     def new
@@ -21,12 +23,12 @@ class ClientsController < ApplicationController
 
     def create
         @client = current_user.clients.new(client_params)
-            if @client.save
-                redirect_to @client, notice: 'Client was successfully created!'
-            else
-                flash.now[:errors] = @client.errors.full_messages
-                render 'new'
-            end
+        if @client.save
+            redirect_to @client, notice: 'Client was successfully created!'
+        else
+            flash.now[:errors] = @client.errors.full_messages
+            render 'new'
+        end
     end
 
     def show
@@ -35,8 +37,12 @@ class ClientsController < ApplicationController
 
     def update
         if current_user && @client.users.include?(current_user) 
-            @client.update(client_params)
-            redirect_to @client, notice: 'Client was successfully updated.'
+            if @client.update(client_params)
+                redirect_to @client, notice: 'Client was successfully updated.'
+            else
+                flash.now[:notice] = 'Client was not updated!'
+                render :edit
+            end
         else
             flash.now[:notice] = 'Client was not updated!'
             render :edit
@@ -45,9 +51,7 @@ class ClientsController < ApplicationController
 
     def destroy
         @client.destroy
-        respond_to do |format|
-            format.html { redirect_to clients_path, notice: 'Client was successfully deleted.' }
-        end
+            redirect_to clients_path, notice: 'Client was successfully deleted.'
     end
 
     private

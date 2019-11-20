@@ -14,8 +14,17 @@
     <%= render 'layouts/nav' %>
 
     <div class="field container-fluid ">
-      <p class="notice"><%= notice %></p>
-      <p class="alert"><%= alert %></p>
+      <% if flash[:notice] %>
+        <div class="notification is-primary global-notification">
+          <p class="notice"><%= notice %></p>
+        </div>
+      <% end %>
+
+      <% if flash[:alert] %>
+        <div class="notification is-danger global-notification">
+          <p class="alert"><%= alert %></p>
+          </div>
+      <% end %>
     
     <div class="row">
       <div class="col">

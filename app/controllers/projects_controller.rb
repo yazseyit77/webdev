@@ -31,31 +31,26 @@ class ProjectsController < ApplicationController
 
     def create
         @project = current_user.projects.build(project_params)
-        respond_to do |format|
             if @project.save
-                format.html { redirect_to client_path(@project.client.id), notice: 'Project was successfully created!' }
+                redirect_to client_path(@project.client.id), notice: 'Project was successfully created!'
             else
-                format.html { redirect_to 'new', notice: 'Project was not created!' }
+                redirect_to 'new', notice: 'Project was not created!'
             end
-        end
     end
 
 
     def update
-        respond_to do |format|
-            if @project.update(project_params)
-                format.html { redirect_to @project, notice: 'Project was successfully created!' }
-            else
-                format.html { redirect_to new_peoject_path, notice: 'Project was not created!' }
-            end
+        if @project.update(project_params)
+            redirect_to @project, notice: 'Project was successfully updated!'
+        else
+            flash[:notice] = 'Client was not updated!'
+            redirect_to new_project_path
         end
     end
 
     def destroy
         @project.destroy
-        respond_to do |format|
-            format.html { redirect_to client_path(@project.client.id), notice: 'Project was successfully deleted.' }
-        end
+        redirect_to client_path(@project.client.id), notice: 'Project was successfully deleted.'
     end
 
     private

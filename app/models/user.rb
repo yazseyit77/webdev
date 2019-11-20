@@ -16,4 +16,9 @@ class User < ApplicationRecord
       end
     end
 
+    
+    def listed
+      self.clients.order(name: :ASC).uniq
+    end
+
 end
